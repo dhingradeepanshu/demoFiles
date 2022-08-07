@@ -1,7 +1,7 @@
 pipeline{
     agent any
     triggers{
-        pollSCM("*/15 * * * *")
+        pollSCM("*/30 * * * *")
     }
     stages{
 
@@ -17,6 +17,13 @@ pipeline{
                 sh '''
                 ./mvnw package
                 '''
+            }
+        }
+
+        stage('Random echo'){
+            steps{
+                echo "Hello Please go to ${BUILD_URL} and verify the build",
+                echo "This is the current Result of the build ${currentResult}"
             }
         }
 
