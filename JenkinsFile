@@ -1,8 +1,21 @@
+void auditTools(){
+    sh '''
+    java -version
+    '''
+}
+
+void setValue(){
+    if(params.HELLO == "true" || params.HELLO == 't'){
+        params.HELLO = "Hello variable is set to true" 
+    }
+}
+
 pipeline{
     agent any
 
     parameters{
         text(name:"JIRAID", description:"Enter your JIRA ID")
+        text(name:"HELLO", description:"Enter true or false")
     }
 
     environment{
@@ -15,9 +28,7 @@ pipeline{
 
         stage('audit tools'){
             steps{
-                sh '''
-                java -version
-                '''
+                auditTools()
             }
         }
 
@@ -73,7 +84,7 @@ pipeline{
             }
             steps {
                 writeFile file:"${FILENAME}",
-                          text:"This is the Jira ID for this build: ${JIRAID}"
+                          text:"This is the Jira ID for this build: ${JIRAID}\n ${HELLO}"
             }
         }
 
