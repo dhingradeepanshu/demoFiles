@@ -1,5 +1,10 @@
 pipeline{
     agent any
+
+    parameters{
+        text(name="JIRAID", description="Enter your JIRA ID")
+    }
+    
     environment{
         variable = 5
     }
@@ -50,12 +55,12 @@ pipeline{
                 ok "Yes write"
                 parameters {
                     string(name: 'FILENAME', defaultValue: 'example.txt', description: 'Enter file name')
-                    string(name: 'TEXT')
+                    // string(name: 'TEXT')
                 }
             }
             steps {
                 writeFile file:"${FILENAME}",
-                          text:"${TEXT}"
+                          text:"This is the Jira ID for this build: ${JIRAID}"
             }
         }
 
