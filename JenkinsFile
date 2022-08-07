@@ -22,8 +22,10 @@ pipeline{
 
         stage('Random echo'){
             steps{
+                sh'''
                 echo "Hello Please go to ${BUILD_URL} and verify the build",
                 echo "This is the current Result of the build ${currentResult}"
+                '''
             }
         }
 
