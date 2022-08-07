@@ -13,12 +13,12 @@ pipeline{
         stage('Build Code'){
             steps{
                 sh '''
-                bat ./mvnw package
+                ./mvnw package
                 '''
             }
         }
 
-        
+
 
 
     }
