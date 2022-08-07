@@ -84,7 +84,7 @@ pipeline{
             }
             steps {
                 writeFile file:"${FILENAME}",
-                          text:"This is the Jira ID for this build: ${JIRAID}\n ${HELLO}"
+                          text:"This is the Jira ID for this build: ${params.JIRAID}\n ${params.HELLO}"
             }
         }
 
