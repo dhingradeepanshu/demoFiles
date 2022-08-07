@@ -13,6 +13,14 @@ pipeline{
     }
     stages{
 
+        stage('audit tools'){
+            steps{
+                sh '''
+                java -version
+                '''
+            }
+        }
+
         stage('Get code'){
             steps{
                 git branch:'main', 
