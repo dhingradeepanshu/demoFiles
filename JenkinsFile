@@ -37,8 +37,8 @@ pipeline{
         stage('Inside shell echo'){
             steps{
                 sh '''
-                echo "Hello Please go to ${env.BUILD_URL} and verify the build"
-                echo "This is the current Result of the build ${currentBuild.currentResult}"
+                echo "Hello Please go to ${BUILD_URL} and verify the build"
+                echo "This is the current Result of the build ${currentResult}"
                 echo "Variable defined in environement ${variable}"
                 '''
             }
