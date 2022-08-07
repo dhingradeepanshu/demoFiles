@@ -21,9 +21,9 @@ pipeline{
     environment{
         variable = 5
     }
-    triggers{
-        pollSCM("*/30 * * * *")
-    }
+    // triggers{
+    //     pollSCM("*/30 * * * *")
+    // }
     stages{
 
         stage('audit tools'){
@@ -73,7 +73,7 @@ pipeline{
             }
         }
 
-        stage('Example') {
+        stage('Writing File') {
             input {
                 message "Should we continue writing to a file?"
                 ok "Yes write"
