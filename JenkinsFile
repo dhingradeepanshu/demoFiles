@@ -4,9 +4,9 @@ void auditTools(){
     '''
 }
 
-void setValue(){
+String setValue(){
     if(params.HELLO == "true" || params.HELLO == 't'){
-        params.HELLO = "Hello variable is set to true" 
+        return "Hello variable is set to ${params.HELLO}" 
     }
 }
 
@@ -83,8 +83,9 @@ pipeline{
                 }
             }
             steps {
+                VALUE=setValue()
                 writeFile file:"${FILENAME}",
-                          text:"This is the Jira ID for this build: ${params.JIRAID}\n ${params.HELLO}"
+                          text:"This is the Jira ID for this build: ${params.JIRAID}\n${VALUE}"
             }
         }
 
