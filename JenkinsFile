@@ -1,0 +1,16 @@
+pipeline{
+    agent any
+
+    stages{
+
+        stage('Get code'){
+            steps{
+                git branch:'main', 
+                    url: 'https://github.com/dhingradeepanshu/demoFiles'
+            }
+        }
+
+
+
+    }
+}
