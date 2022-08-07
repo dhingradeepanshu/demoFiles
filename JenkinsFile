@@ -6,7 +6,7 @@ pipeline{
         stage('Get code'){
             steps{
                 git branch:'main', 
-                    url: 'https://github.com/dhingradeepanshu/demoFiles'
+                    url: 'https://github.com/dhingradeepanshu/demoDevopsRepo'
             }
         }
 
