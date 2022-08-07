@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment{
+        variable = 5
+    }
     triggers{
         pollSCM("*/30 * * * *")
     }
@@ -23,8 +26,9 @@ pipeline{
         stage('Random echo'){
             steps{
                 
-                echo "Hello Please go to ${BUILD_URL} and verify the build"
+                echo "Hello Please go to ${env.BUILD_URL} and verify the build"
                 echo "This is the current Result of the build ${currentBuild.currentResult}"
+                echo "Variable defined in environement ${variable}"
                 
             }
         }
