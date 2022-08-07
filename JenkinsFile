@@ -2,9 +2,9 @@ pipeline{
     agent any
 
     parameters{
-        text(name="JIRAID", description="Enter your JIRA ID")
+        text(name:"JIRAID", description:"Enter your JIRA ID")
     }
-    
+
     environment{
         variable = 5
     }
@@ -17,6 +17,11 @@ pipeline{
             steps{
                 git branch:'main', 
                     url: 'https://github.com/dhingradeepanshu/demoDevopsRepo'
+            }
+            post{
+                failure{
+                    sh "exit 1"
+                }
             }
         }
 
