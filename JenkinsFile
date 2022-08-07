@@ -74,6 +74,9 @@ pipeline{
         }
 
         stage('Writing File') {
+            environement{
+                VALUE=setValue()
+            }
             input {
                 message "Should we continue writing to a file?"
                 ok "Yes write"
@@ -83,7 +86,7 @@ pipeline{
                 }
             }
             steps {
-                VALUE=setValue()
+                
                 writeFile file:"${FILENAME}",
                           text:"This is the Jira ID for this build: ${params.JIRAID}\n${VALUE}"
             }
